@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "719215325646",
+    "project_id": "pizza-hot-beccc",
+    "storage_bucket": "pizza-hot-beccc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719215325646:android:9d36e6df8ccd4c4b683b9f",
+        "android_client_info": {
+          "package_name": "com.example.hello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719215325646-7q02ontfj92lnoa8qtr14b2c4algbmfp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hello",
+            "certificate_hash": "baa302707aa4d54d747b0249c5ad264cc7af4f65"
+          }
+        },
+        {
+          "client_id": "719215325646-1deh3in07edt2445ba2qgpsiool6dj3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPnXO_RYdvLvCAEJzAaQYIfBR972a85Hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719215325646-1deh3in07edt2445ba2qgpsiool6dj3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
