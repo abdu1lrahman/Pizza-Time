@@ -31,16 +31,16 @@ class _LoginState extends State<Login> {
     return Scaffold(
       body: ListView(
         children: [
-          Expanded(
-            flex: 1,
+          SizedBox(
+            
             child: Imageblur(
               text: S.of(context).future,
               imagePath: 'assets/images/food1.jpg',
             ),
           ),
           const SizedBox(height: 15.0),
-          Expanded(
-            flex: 1,
+          SizedBox(
+            
             child: Form(
               key: formKey,
               child: Column(

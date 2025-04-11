@@ -38,17 +38,15 @@ class _MyAppState extends State<MyApp> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Widget interScreen = const Login();
 
-  void _checkLoginStatus() async {
+  Future<void> _checkLoginStatus() async {
     User? user = _auth.currentUser;
     if (user != null) {
-      debugPrint("User is already signed in: ${user.email}");
-      // Navigate to the home screen
-      setState(() {
-        interScreen = const HomeScreen();
-      });
+      interScreen = const HomeScreen();
     } else {
-      debugPrint("No user is signed in");
-      // Show the login screen
+      interScreen = const Login();
+    }
+    if (mounted) {
+      setState(() {});
     }
   }
 
@@ -80,7 +78,7 @@ class _MyAppState extends State<MyApp> {
       },
       title: 'Pizza Time',
       debugShowCheckedModeBanner: false,
-      home: interScreen,
+      home: Login(),
     );
   }
 }

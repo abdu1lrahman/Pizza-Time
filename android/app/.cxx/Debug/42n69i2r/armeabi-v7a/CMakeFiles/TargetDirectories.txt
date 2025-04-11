@@ -1,0 +1,2 @@
+C:/Users/Abdulrahman/Desktop/flutter projects/pizza_time/android/app/.cxx/Debug/42n69i2r/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Abdulrahman/Desktop/flutter projects/pizza_time/android/app/.cxx/Debug/42n69i2r/armeabi-v7a/CMakeFiles/rebuild_cache.dir

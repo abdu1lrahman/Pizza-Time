@@ -2,7 +2,7 @@ name: pizza_time
 description: "A new Flutter project."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 2.0.0
 
 environment:
   sdk: ^3.5.3
@@ -16,7 +16,7 @@ dependencies:
   # the next four packages are for firebase support
   firebase_core: ^3.8.0
   cloud_firestore: ^5.5.0
-  firebase_auth: ^5.3.3
+  firebase_auth: ^5.5.1
   google_sign_in: ^6.2.2
   # For local DataBase I uesd Sqflite
   sqflite: ^2.4.1
@@ -28,6 +28,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
+  # and these packages to manage the splash screen and the app Icon
   flutter_native_splash: ^2.4.3
   flutter_launcher_icons: ^0.14.2
 
