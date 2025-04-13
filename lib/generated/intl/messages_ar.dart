@@ -22,44 +22,55 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "Logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
-        "Logout_confirm": MessageLookupByLibrary.simpleMessage(
-            "هل أنت متأكد من أنك تريد تسجيل الخروج"),
-        "No": MessageLookupByLibrary.simpleMessage("لا"),
-        "Pepperoni": MessageLookupByLibrary.simpleMessage("ببروني بيتزا"),
-        "Register":
-            MessageLookupByLibrary.simpleMessage("انشئ حسابا من أجل بدء رحلتك"),
-        "Yes": MessageLookupByLibrary.simpleMessage("نعم"),
-        "add_chart": MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
-        "back": MessageLookupByLibrary.simpleMessage("العودة"),
-        "bbq": MessageLookupByLibrary.simpleMessage("باربكيو الدجاج"),
-        "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
-        "change_language_confirm": MessageLookupByLibrary.simpleMessage(
-            "هل تريد تغيير اللغة إلى الانجليزية"),
-        "change_language_success":
-            MessageLookupByLibrary.simpleMessage("تم تغيير اللغة بنجاح"),
-        "dont_have_an_account":
-            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
-        "empty_email":
-            MessageLookupByLibrary.simpleMessage("لا يمكن ترك الحقل فارغا"),
-        "fogot_password":
-            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
-        "future": MessageLookupByLibrary.simpleMessage("مستقبل طلبات البيتزا"),
-        "hawaiian": MessageLookupByLibrary.simpleMessage("بيتزا هاوايس"),
-        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
-        "margherita": MessageLookupByLibrary.simpleMessage("بيتزا مارغريتا"),
-        "my_account": MessageLookupByLibrary.simpleMessage("حسابي"),
-        "order_title": MessageLookupByLibrary.simpleMessage("طلباتي"),
-        "orloginwith":
-            MessageLookupByLibrary.simpleMessage("أو يمكنك تسجيل الدخول عبر"),
-        "pizza_details": MessageLookupByLibrary.simpleMessage("تفاصيل البيتزا"),
-        "register": MessageLookupByLibrary.simpleMessage("انشئ حساب"),
-        "reset_password":
-            MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
-        "search": MessageLookupByLibrary.simpleMessage("البحث"),
-        "settings": MessageLookupByLibrary.simpleMessage("الأعدادات"),
-        "title": MessageLookupByLibrary.simpleMessage("اطلب البيتزا الان"),
-        "vegetarian": MessageLookupByLibrary.simpleMessage("بيتزا خضار")
-      };
+    "add_chart": MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
+    "back": MessageLookupByLibrary.simpleMessage("العودة"),
+    "bbq": MessageLookupByLibrary.simpleMessage("باربكيو الدجاج"),
+    "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "change_language_confirm": MessageLookupByLibrary.simpleMessage(
+      "هل تريد تغيير اللغة إلى الانجليزية",
+    ),
+    "change_language_success": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير اللغة بنجاح",
+    ),
+    "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
+      "ليس لديك حساب؟",
+    ),
+    "empty_email": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن ترك الحقل فارغا",
+    ),
+    "fogot_password": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "future": MessageLookupByLibrary.simpleMessage("مستقبل طلبات البيتزا"),
+    "hawaiian": MessageLookupByLibrary.simpleMessage("بيتزا هاوايس"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "loaded": MessageLookupByLibrary.simpleMessage(
+      "محملة بالفلفل الحلو والفطر والبصل والزيتون والطماطم",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "logout_confirm": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد من أنك تريد تسجيل الخروج",
+    ),
+    "margherita": MessageLookupByLibrary.simpleMessage("بيتزا مارغريتا"),
+    "my_account": MessageLookupByLibrary.simpleMessage("حسابي"),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "order_title": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "orloginwith": MessageLookupByLibrary.simpleMessage(
+      "أو يمكنك تسجيل الدخول عبر",
+    ),
+    "pepperoni": MessageLookupByLibrary.simpleMessage("ببروني بيتزا"),
+    "pizza_details": MessageLookupByLibrary.simpleMessage("تفاصيل البيتزا"),
+    "register": MessageLookupByLibrary.simpleMessage(
+      "انشئ حسابا من أجل بدء رحلتك",
+    ),
+    "register1": MessageLookupByLibrary.simpleMessage("انشئ حساب"),
+    "reset_password": MessageLookupByLibrary.simpleMessage(
+      "إعادة تعيين كلمة المرور",
+    ),
+    "search": MessageLookupByLibrary.simpleMessage("البحث"),
+    "send": MessageLookupByLibrary.simpleMessage("أرسل"),
+    "settings": MessageLookupByLibrary.simpleMessage("الأعدادات"),
+    "title": MessageLookupByLibrary.simpleMessage("اطلب البيتزا الان"),
+    "vegetarian": MessageLookupByLibrary.simpleMessage("بيتزا خضار"),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
+  };
 }

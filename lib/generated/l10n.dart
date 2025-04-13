@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -61,53 +66,33 @@ class S {
   }
 
   /// `Login`
-  String get Login {
-    return Intl.message(
-      'Login',
-      name: 'Login',
-      desc: '',
-      args: [],
-    );
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
   }
 
   /// `Logout`
-  String get Logout {
-    return Intl.message(
-      'Logout',
-      name: 'Logout',
-      desc: '',
-      args: [],
-    );
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
 
   /// `are you sure you want to logout`
-  String get Logout_confirm {
+  String get logout_confirm {
     return Intl.message(
       'are you sure you want to logout',
-      name: 'Logout_confirm',
+      name: 'logout_confirm',
       desc: '',
       args: [],
     );
   }
 
   /// `Yes`
-  String get Yes {
-    return Intl.message(
-      'Yes',
-      name: 'Yes',
-      desc: '',
-      args: [],
-    );
+  String get yes {
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
   }
 
   /// `No`
-  String get No {
-    return Intl.message(
-      'No',
-      name: 'No',
-      desc: '',
-      args: [],
-    );
+  String get no {
+    return Intl.message('No', name: 'no', desc: '', args: []);
   }
 
   /// `The Future of pizza ordrer`
@@ -122,42 +107,22 @@ class S {
 
   /// `My Orders`
   String get order_title {
-    return Intl.message(
-      'My Orders',
-      name: 'order_title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('My Orders', name: 'order_title', desc: '', args: []);
   }
 
   /// `Settings`
   String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `My Account`
   String get my_account {
-    return Intl.message(
-      'My Account',
-      name: 'my_account',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('My Account', name: 'my_account', desc: '', args: []);
   }
 
   /// `Language`
   String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
   /// `Change Language`
@@ -191,23 +156,18 @@ class S {
   }
 
   /// `sign up to start your journy`
-  String get Register {
+  String get register {
     return Intl.message(
       'sign up to start your journy',
-      name: 'Register',
+      name: 'register',
       desc: '',
       args: [],
     );
   }
 
   /// `Register`
-  String get register {
-    return Intl.message(
-      'Register',
-      name: 'register',
-      desc: '',
-      args: [],
-    );
+  String get register1 {
+    return Intl.message('Register', name: 'register1', desc: '', args: []);
   }
 
   /// `Don't have an account?`
@@ -262,72 +222,37 @@ class S {
 
   /// `back`
   String get back {
-    return Intl.message(
-      'back',
-      name: 'back',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('back', name: 'back', desc: '', args: []);
   }
 
   /// `Search`
   String get search {
-    return Intl.message(
-      'Search',
-      name: 'search',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Search', name: 'search', desc: '', args: []);
   }
 
   /// `Vegetarian`
   String get vegetarian {
-    return Intl.message(
-      'Vegetarian',
-      name: 'vegetarian',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Vegetarian', name: 'vegetarian', desc: '', args: []);
   }
 
   /// `Pepperoni`
-  String get Pepperoni {
-    return Intl.message(
-      'Pepperoni',
-      name: 'Pepperoni',
-      desc: '',
-      args: [],
-    );
+  String get pepperoni {
+    return Intl.message('Pepperoni', name: 'pepperoni', desc: '', args: []);
   }
 
   /// `BBQ Chicken`
   String get bbq {
-    return Intl.message(
-      'BBQ Chicken',
-      name: 'bbq',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('BBQ Chicken', name: 'bbq', desc: '', args: []);
   }
 
   /// `Margherita`
   String get margherita {
-    return Intl.message(
-      'Margherita',
-      name: 'margherita',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Margherita', name: 'margherita', desc: '', args: []);
   }
 
   /// `Hawaiian`
   String get hawaiian {
-    return Intl.message(
-      'Hawaiian',
-      name: 'hawaiian',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hawaiian', name: 'hawaiian', desc: '', args: []);
   }
 
   /// `Pizza Details`
@@ -342,12 +267,22 @@ class S {
 
   /// `add to cart`
   String get add_chart {
+    return Intl.message('add to cart', name: 'add_chart', desc: '', args: []);
+  }
+
+  /// `Loaded with bell peppers, mushrooms, onions, olives, and tomatoes`
+  String get loaded {
     return Intl.message(
-      'add to cart',
-      name: 'add_chart',
+      'Loaded with bell peppers, mushrooms, onions, olives, and tomatoes',
+      name: 'loaded',
       desc: '',
       args: [],
     );
+  }
+
+  /// `send`
+  String get send {
+    return Intl.message('send', name: 'send', desc: '', args: []);
   }
 }
 

@@ -22,45 +22,53 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Login": MessageLookupByLibrary.simpleMessage("Login"),
-        "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
-        "Logout_confirm": MessageLookupByLibrary.simpleMessage(
-            "are you sure you want to logout"),
-        "No": MessageLookupByLibrary.simpleMessage("No"),
-        "Pepperoni": MessageLookupByLibrary.simpleMessage("Pepperoni"),
-        "Register": MessageLookupByLibrary.simpleMessage(
-            "sign up to start your journy"),
-        "Yes": MessageLookupByLibrary.simpleMessage("Yes"),
-        "add_chart": MessageLookupByLibrary.simpleMessage("add to cart"),
-        "back": MessageLookupByLibrary.simpleMessage("back"),
-        "bbq": MessageLookupByLibrary.simpleMessage("BBQ Chicken"),
-        "change_language":
-            MessageLookupByLibrary.simpleMessage("Change Language"),
-        "change_language_confirm": MessageLookupByLibrary.simpleMessage(
-            "do you want to change language into arabic"),
-        "change_language_success": MessageLookupByLibrary.simpleMessage(
-            "language changed successfully"),
-        "dont_have_an_account":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
-        "empty_email":
-            MessageLookupByLibrary.simpleMessage("email can not be empty"),
-        "fogot_password":
-            MessageLookupByLibrary.simpleMessage("Forgot Password?"),
-        "future":
-            MessageLookupByLibrary.simpleMessage("The Future of pizza ordrer"),
-        "hawaiian": MessageLookupByLibrary.simpleMessage("Hawaiian"),
-        "language": MessageLookupByLibrary.simpleMessage("Language"),
-        "margherita": MessageLookupByLibrary.simpleMessage("Margherita"),
-        "my_account": MessageLookupByLibrary.simpleMessage("My Account"),
-        "order_title": MessageLookupByLibrary.simpleMessage("My Orders"),
-        "orloginwith": MessageLookupByLibrary.simpleMessage("or Login With"),
-        "pizza_details": MessageLookupByLibrary.simpleMessage("Pizza Details"),
-        "register": MessageLookupByLibrary.simpleMessage("Register"),
-        "reset_password":
-            MessageLookupByLibrary.simpleMessage("Reset Password"),
-        "search": MessageLookupByLibrary.simpleMessage("Search"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "title": MessageLookupByLibrary.simpleMessage("Order your pizza now"),
-        "vegetarian": MessageLookupByLibrary.simpleMessage("Vegetarian")
-      };
+    "add_chart": MessageLookupByLibrary.simpleMessage("add to cart"),
+    "back": MessageLookupByLibrary.simpleMessage("back"),
+    "bbq": MessageLookupByLibrary.simpleMessage("BBQ Chicken"),
+    "change_language": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "change_language_confirm": MessageLookupByLibrary.simpleMessage(
+      "do you want to change language into arabic",
+    ),
+    "change_language_success": MessageLookupByLibrary.simpleMessage(
+      "language changed successfully",
+    ),
+    "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "empty_email": MessageLookupByLibrary.simpleMessage(
+      "email can not be empty",
+    ),
+    "fogot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "future": MessageLookupByLibrary.simpleMessage(
+      "The Future of pizza ordrer",
+    ),
+    "hawaiian": MessageLookupByLibrary.simpleMessage("Hawaiian"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "loaded": MessageLookupByLibrary.simpleMessage(
+      "Loaded with bell peppers, mushrooms, onions, olives, and tomatoes",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "logout_confirm": MessageLookupByLibrary.simpleMessage(
+      "are you sure you want to logout",
+    ),
+    "margherita": MessageLookupByLibrary.simpleMessage("Margherita"),
+    "my_account": MessageLookupByLibrary.simpleMessage("My Account"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
+    "order_title": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "orloginwith": MessageLookupByLibrary.simpleMessage("or Login With"),
+    "pepperoni": MessageLookupByLibrary.simpleMessage("Pepperoni"),
+    "pizza_details": MessageLookupByLibrary.simpleMessage("Pizza Details"),
+    "register": MessageLookupByLibrary.simpleMessage(
+      "sign up to start your journy",
+    ),
+    "register1": MessageLookupByLibrary.simpleMessage("Register"),
+    "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "send": MessageLookupByLibrary.simpleMessage("send"),
+    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "title": MessageLookupByLibrary.simpleMessage("Order your pizza now"),
+    "vegetarian": MessageLookupByLibrary.simpleMessage("Vegetarian"),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+  };
 }
