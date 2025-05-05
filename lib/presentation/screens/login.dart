@@ -6,6 +6,7 @@ import 'package:pizza_time/core/components/text_field.dart';
 import 'package:pizza_time/core/constants/constants.dart';
 import 'package:pizza_time/firebase/google_login.dart';
 import 'package:pizza_time/generated/l10n.dart';
+import 'package:pizza_time/presentation/providers/image_provider.dart';
 import 'package:pizza_time/presentation/providers/language_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,12 +28,12 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     final languageProvider =
         Provider.of<LanguageProvider>(context, listen: false);
+    final imagePrivider = Provider.of<ImageProvider1>(context, listen: false);
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(
         children: [
           SizedBox(
-            
             child: Imageblur(
               text: S.of(context).future,
               imagePath: 'assets/images/food1.jpg',
@@ -40,7 +41,6 @@ class _LoginState extends State<Login> {
           ),
           const SizedBox(height: 15.0),
           SizedBox(
-            
             child: Form(
               key: formKey,
               child: Column(
@@ -116,6 +116,7 @@ class _LoginState extends State<Login> {
                               SharedPreferences pref =
                                   await SharedPreferences.getInstance();
                               pref.setBool('user_login', true);
+                              imagePrivider.changeEmail(email.text);
                               Navigator.pushNamedAndRemoveUntil(
                                   context, 'home', (route) => false);
                             } on FirebaseAuthException catch (e) {
@@ -181,12 +182,7 @@ class _LoginState extends State<Login> {
                     width: screenWidth / 3 - 20,
                     name: 'Google',
                     function: () async {
-                      debugPrint(
-                          "==========started google sgin in================");
-                      signInWithGoogle(context);
-                      SharedPreferences pref =
-                          await SharedPreferences.getInstance();
-                      pref.setBool('user_login', true);
+                      signInWithGoogle(context);    
                     },
                   ),
                   Padding(
@@ -198,7 +194,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(width: 10),
                         GestureDetector(
                           child: Text(
-                            S.of(context).register,
+                            S.of(context).register1,
                             style: TextStyle(color: mainColor),
                           ),
                           onTap: () {
@@ -215,6 +211,7 @@ class _LoginState extends State<Login> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        mini: true,
         tooltip: S.of(context).language,
         backgroundColor: Colors.black,
         shape: const CircleBorder(),

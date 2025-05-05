@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:pizza_time/data/models/pizza_models.dart';
 import 'package:pizza_time/generated/l10n.dart';
-import 'package:pizza_time/presentation/mobileScreens/details_screen.dart';
+import 'package:pizza_time/presentation/screens/details_screen.dart';
 import 'package:pizza_time/presentation/widgets/custom_search.dart';
 import 'package:provider/provider.dart';
 import 'package:pizza_time/presentation/providers/image_provider.dart';
@@ -46,16 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircleAvatar(
               radius: 17,
               child: ClipOval(
-                child: (imageProvider.loadImage() != false)
-                    ? Image.file(
-                        imageProvider.image!,
-                        fit: BoxFit.cover,
-                        width: 39,
-                        height: 39,
-                      )
-                    : const Icon(
-                        Icons.account_circle_outlined,
-                      ),
+                child: imageProvider.getUserAvatar(),
               ),
             ),
           ),

@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:pizza_time/core/components/text_field2.dart';
 import 'package:pizza_time/core/constants/constants.dart';
 import 'package:pizza_time/generated/l10n.dart';
+import 'package:pizza_time/presentation/providers/image_provider.dart';
 import 'package:pizza_time/presentation/providers/language_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,12 +21,7 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   File? _image;
   String? username, email;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadImage();
-  }
+  TextEditingController usernameController = TextEditingController();
 
   Future<void> pickImage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,22 +35,11 @@ class _AccountScreenState extends State<AccountScreen> {
     }
   }
 
-  Future<void> _loadImage() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? imagePath = prefs.getString('user_image');
-    if (imagePath != null) {
-      setState(() {
-        _image = File(imagePath);
-      });
-    }
-    username = prefs.getString('username');
-    email = prefs.getString('email');
-  }
-
   @override
   Widget build(BuildContext context) {
     final languageProvider =
         Provider.of<LanguageProvider>(context, listen: false);
+    final imageProvider = Provider.of<ImageProvider1>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: secondryColor,
@@ -90,9 +75,12 @@ class _AccountScreenState extends State<AccountScreen> {
                             await FirebaseAuth.instance.signOut();
                         SharedPreferences pref =
                             await SharedPreferences.getInstance();
-                        pref.setBool('user_login', false);
+                        pref.setString('user_image', '');
                         Navigator.pushNamedAndRemoveUntil(
-                            context, 'login', (route) => false);
+                            // ignore: use_build_context_synchronously
+                            context,
+                            'login',
+                            (route) => false);
                       },
                       child: Text(S.of(context).yes),
                     ),
@@ -113,9 +101,18 @@ class _AccountScreenState extends State<AccountScreen> {
       body: Column(
         children: [
           Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  secondryColor,
+                  const Color.fromARGB(255, 255, 235, 190)
+                ],
+              ),
+            ),
             padding: const EdgeInsets.symmetric(vertical: 12),
             width: double.infinity,
-            color: secondryColor,
             child: Column(
               children: [
                 InkWell(
@@ -123,20 +120,9 @@ class _AccountScreenState extends State<AccountScreen> {
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 70.0,
-                    child: _image != null
-                        ? ClipOval(
-                            child: Image.file(
-                              _image!,
-                              fit: BoxFit.cover,
-                              width: 140.0,
-                              height: 140.0,
-                            ),
-                          )
-                        : const Icon(
-                            color: Colors.black,
-                            Icons.add_a_photo_outlined,
-                            size: 35,
-                          ),
+                    child: ClipOval(
+                      child: imageProvider.getUserAvatar(),
+                    ),
                   ),
                 ),
                 if (_image != null)
@@ -159,22 +145,54 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
           Expanded(
             flex: 2,
-            child: Column(
-              children: [
-                TextField2(
-                  icon: const Icon(Icons.person_outline),
-                  text: 'username',
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color.fromARGB(255, 255, 235, 190), Colors.white],
                 ),
-                TextField2(
-                  icon: const Icon(Icons.email_outlined),
-                  text: 'email',
-                ),
-              ],
+              ),
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(S.of(context).change_username),
+                          content: Text(S.of(context).enter_username),
+                          actions: [
+                            TextFormField(
+                              controller: usernameController,
+                              onChanged: (value) {
+                                imageProvider.changeUsername(value);
+                              },
+                              onFieldSubmitted: (value) {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    child: TextField2(
+                      icon: const Icon(Icons.person_outline),
+                      text: imageProvider.username,
+                    ),
+                  ),
+                  TextField2(
+                    icon: const Icon(Icons.email_outlined),
+                    text: imageProvider.email,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: S.of(context).change_language,
         shape: const CircleBorder(),
         backgroundColor: Colors.black,
         onPressed: () {
@@ -196,13 +214,13 @@ class _AccountScreenState extends State<AccountScreen> {
                           content: Text(S.of(context).change_language_success)),
                     );
                   },
-                  child: Text(S.of(context).Yes),
+                  child: Text(S.of(context).yes),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text(S.of(context).No),
+                  child: Text(S.of(context).no),
                 ),
               ],
             ),

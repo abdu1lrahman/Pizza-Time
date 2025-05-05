@@ -32,13 +32,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language_success": MessageLookupByLibrary.simpleMessage(
       "تم تغيير اللغة بنجاح",
     ),
+    "change_username": MessageLookupByLibrary.simpleMessage(
+      "هل تريد تغيير اسم المستخدم؟",
+    ),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "ليس لديك حساب؟",
     ),
     "empty_email": MessageLookupByLibrary.simpleMessage(
       "لا يمكن ترك الحقل فارغا",
     ),
+    "enter_email": MessageLookupByLibrary.simpleMessage(
+      "أدخل عنوان بريدك الإلكتروني وسنقوم بإرسال رابط لك لتغيير كلمة المرور",
+    ),
+    "enter_username": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسم المستخدم الجديد",
+    ),
     "fogot_password": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "forgot": MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
     "future": MessageLookupByLibrary.simpleMessage("مستقبل طلبات البيتزا"),
     "hawaiian": MessageLookupByLibrary.simpleMessage("بيتزا هاوايس"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -72,5 +82,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "title": MessageLookupByLibrary.simpleMessage("اطلب البيتزا الان"),
     "vegetarian": MessageLookupByLibrary.simpleMessage("بيتزا خضار"),
     "yes": MessageLookupByLibrary.simpleMessage("نعم"),
+    "your_email_and_username": MessageLookupByLibrary.simpleMessage(
+      "إن بريدك الإلكتروني واسم المستخدم غير مرئيين ولن يستطيع المستخدمين رؤيتهم.",
+    ),
   };
 }

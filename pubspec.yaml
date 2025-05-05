@@ -31,6 +31,8 @@ dependencies:
   # and these packages to manage the splash screen and the app Icon
   flutter_native_splash: ^2.4.3
   flutter_launcher_icons: ^0.14.2
+  # Stripe package for E-Payment
+  flutter_stripe: ^11.5.0
 
 dev_dependencies:
   flutter_test:

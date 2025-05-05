@@ -27,7 +27,7 @@ class _SignupState extends State<Signup> {
         children: [
           SizedBox(
             child: Imageblur(
-              text: S.of(context).Register,
+              text: S.of(context).register,
               imagePath: 'assets/images/food2.jpg',
             ),
           ),
@@ -38,7 +38,7 @@ class _SignupState extends State<Signup> {
               child: Column(
                 children: [
                   deafultTextField(
-                    label: 'UserName',
+                    label: 'username',
                     controller: username,
                     validator: (value) {
                       return;
@@ -96,8 +96,8 @@ class _SignupState extends State<Signup> {
                       height: 50,
                       child: MaterialButton(
                         child: Text(
-                          S.of(context).register,
-                          style: TextStyle(
+                          S.of(context).register1,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                           ),
@@ -131,6 +131,20 @@ class _SignupState extends State<Signup> {
                           //Navigator.pushReplacementNamed(context, 'home');
                         },
                       ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.error_outline),
+                        const SizedBox(width: 7),
+                        Flexible(
+                          child: Text(
+                            S.of(context).your_email_and_username,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

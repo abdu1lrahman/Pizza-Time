@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:pizza_time/core/constants/constants.dart';
 import 'package:pizza_time/data/database/sql_db.dart';
 import 'package:pizza_time/data/models/pizza_models.dart';
 import 'package:pizza_time/generated/l10n.dart';

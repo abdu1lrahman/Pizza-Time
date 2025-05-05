@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class TextField2 extends StatelessWidget {
   final Icon icon;
   final String text;
-  double padding = 12.0;
-  String? userName, email, password;
+  final double padding = 12.0;
+  final String? userName='', email='', password='';
 
-  TextField2({super.key, required this.icon, required this.text});
+  const TextField2({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {

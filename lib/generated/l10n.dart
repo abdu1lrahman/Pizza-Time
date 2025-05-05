@@ -280,9 +280,54 @@ class S {
     );
   }
 
-  /// `send`
+  /// `SEND`
   String get send {
-    return Intl.message('send', name: 'send', desc: '', args: []);
+    return Intl.message('SEND', name: 'send', desc: '', args: []);
+  }
+
+  /// `FORGOT PASSWORD`
+  String get forgot {
+    return Intl.message('FORGOT PASSWORD', name: 'forgot', desc: '', args: []);
+  }
+
+  /// `Enter your email address and we'll send you a link to reset your password.`
+  String get enter_email {
+    return Intl.message(
+      'Enter your email address and we\'ll send you a link to reset your password.',
+      name: 'enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your email and username are private and won't be visible to other users.`
+  String get your_email_and_username {
+    return Intl.message(
+      'Your email and username are private and won\'t be visible to other users.',
+      name: 'your_email_and_username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to change your username?`
+  String get change_username {
+    return Intl.message(
+      'Do you want to change your username?',
+      name: 'change_username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new username`
+  String get enter_username {
+    return Intl.message(
+      'Enter your new username',
+      name: 'enter_username',
+      desc: '',
+      args: [],
+    );
   }
 }
 

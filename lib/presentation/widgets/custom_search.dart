@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:pizza_time/data/models/pizza_models.dart';
-import 'package:pizza_time/presentation/mobileScreens/details_screen.dart';
+import 'package:pizza_time/presentation/screens/details_screen.dart';
 
 class CustomSearch extends SearchDelegate {
   List<String> searchTerms = [

@@ -32,13 +32,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_language_success": MessageLookupByLibrary.simpleMessage(
       "language changed successfully",
     ),
+    "change_username": MessageLookupByLibrary.simpleMessage(
+      "Do you want to change your username?",
+    ),
     "dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
     "empty_email": MessageLookupByLibrary.simpleMessage(
       "email can not be empty",
     ),
+    "enter_email": MessageLookupByLibrary.simpleMessage(
+      "Enter your email address and we\'ll send you a link to reset your password.",
+    ),
+    "enter_username": MessageLookupByLibrary.simpleMessage(
+      "Enter your new username",
+    ),
     "fogot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "forgot": MessageLookupByLibrary.simpleMessage("FORGOT PASSWORD"),
     "future": MessageLookupByLibrary.simpleMessage(
       "The Future of pizza ordrer",
     ),
@@ -65,10 +75,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "register1": MessageLookupByLibrary.simpleMessage("Register"),
     "reset_password": MessageLookupByLibrary.simpleMessage("Reset Password"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
-    "send": MessageLookupByLibrary.simpleMessage("send"),
+    "send": MessageLookupByLibrary.simpleMessage("SEND"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "title": MessageLookupByLibrary.simpleMessage("Order your pizza now"),
     "vegetarian": MessageLookupByLibrary.simpleMessage("Vegetarian"),
     "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+    "your_email_and_username": MessageLookupByLibrary.simpleMessage(
+      "Your email and username are private and won\'t be visible to other users.",
+    ),
   };
 }

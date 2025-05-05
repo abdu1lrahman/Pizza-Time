@@ -30,5 +30,10 @@
     "pizza_details": "Pizza Details",
     "add_chart": "add to cart",
     "loaded": "Loaded with bell peppers, mushrooms, onions, olives, and tomatoes",
-    "send": "send"
+    "send": "SEND",
+    "forgot": "FORGOT PASSWORD",
+    "enter_email": "Enter your email address and we'll send you a link to reset your password.",
+    "your_email_and_username": "Your email and username are private and won't be visible to other users.",
+    "change_username": "Do you want to change your username?",
+    "enter_username": "Enter your new username"
 }

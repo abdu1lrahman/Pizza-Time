@@ -40,6 +40,8 @@ class _deafultTextFieldState extends State<deafultTextField> {
         controller: widget.controller,
         validator: widget.validator,
         decoration: InputDecoration(
+          hintText: widget.label,
+          hintStyle: const TextStyle(color: Colors.grey),
           suffixIcon: (widget.obscureText)
               ? IconButton(
                   onPressed: () {
@@ -62,8 +64,8 @@ class _deafultTextFieldState extends State<deafultTextField> {
               color: mainGrey,
             ),
           ),
-          labelText: widget.label,
-          labelStyle: TextStyle(color: mainGrey),
+          // labelText: widget.label,
+          // labelStyle: TextStyle(color: mainGrey),
         ),
       ),
     );

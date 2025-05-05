@@ -1,32 +1,36 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:pizza_time/presentation/providers/auth_provider.dart';
 import 'package:pizza_time/presentation/providers/image_provider.dart';
-import 'package:pizza_time/presentation/responsive.dart';
-import 'package:pizza_time/presentation/mobileScreens/forgotPassword.dart';
-import 'package:pizza_time/presentation/mobileScreens/login.dart';
-import 'package:pizza_time/presentation/mobileScreens/signup.dart';
+import 'package:pizza_time/presentation/screens/user_selection_page.dart';
+import 'package:pizza_time/presentation/screens/forgotPassword.dart';
+import 'package:pizza_time/presentation/screens/login.dart';
+import 'package:pizza_time/presentation/screens/signup.dart';
 import 'package:pizza_time/generated/l10n.dart';
 import 'package:pizza_time/presentation/providers/language_provider.dart';
-import 'package:pizza_time/presentation/mobileScreens/account_screen.dart';
-import 'package:pizza_time/presentation/mobileScreens/home_screen.dart';
-import 'package:pizza_time/presentation/mobileScreens/oreders_screen.dart';
+import 'package:pizza_time/presentation/screens/account_screen.dart';
+import 'package:pizza_time/presentation/screens/home_screen.dart';
+import 'package:pizza_time/presentation/screens/oreders_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Stripe.publishableKey = stripeSecretKey;
   await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
         ChangeNotifierProvider(create: (context) => ImageProvider1()),
+        ChangeNotifierProvider(create: (context) => AuthProvider())
       ],
       child: const MyApp(),
     ),
   );
 }
-  
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -38,6 +42,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
+
     return MaterialApp(
       locale: languageProvider.locale,
       localizationsDelegates: const [
@@ -57,7 +63,8 @@ class _MyAppState extends State<MyApp> {
       },
       title: 'Pizza Time',
       debugShowCheckedModeBanner: false,
-      home: const Responsive(),
+      home:
+          authProvider.isSignedIn == true ? const HomeScreen() : const Login(),
     );
   }
 }
