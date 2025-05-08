@@ -39,7 +39,7 @@ class ImageProvider1 extends ChangeNotifier {
     return const Icon(Icons.account_circle_outlined);
   }
 
-  void changeUsername(String newUsername)async {
+  void changeUsername(String newUsername) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('username', newUsername);
     _username = newUsername;

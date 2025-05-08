@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "order_title": MessageLookupByLibrary.simpleMessage("My Orders"),
     "orloginwith": MessageLookupByLibrary.simpleMessage("or Login With"),
     "pepperoni": MessageLookupByLibrary.simpleMessage("Pepperoni"),
+    "pizza_added_successfully": MessageLookupByLibrary.simpleMessage(
+      "Pizza added successfully to the chart",
+    ),
     "pizza_details": MessageLookupByLibrary.simpleMessage("Pizza Details"),
     "register": MessageLookupByLibrary.simpleMessage(
       "sign up to start your journy",

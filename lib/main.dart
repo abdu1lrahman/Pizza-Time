@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:pizza_time/presentation/providers/auth_provider.dart';
 import 'package:pizza_time/presentation/providers/image_provider.dart';
-import 'package:pizza_time/presentation/screens/user_selection_page.dart';
 import 'package:pizza_time/presentation/screens/forgotPassword.dart';
 import 'package:pizza_time/presentation/screens/login.dart';
 import 'package:pizza_time/presentation/screens/signup.dart';
@@ -17,7 +17,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Stripe.publishableKey = stripeSecretKey;
+  await dotenv.load(fileName: "constants.env");
+  Stripe.publishableKey = dotenv.env['stripePublishableKey']!;
   await Firebase.initializeApp();
   runApp(
     MultiProvider(

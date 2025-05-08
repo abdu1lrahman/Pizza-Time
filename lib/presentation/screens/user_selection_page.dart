@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_time/presentation/providers/image_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UsernameSelectionPage extends StatelessWidget {
   final String email; // Pass the email from Google login
@@ -73,9 +72,9 @@ class UsernameSelectionPage extends StatelessWidget {
               onPressed: () async {
                 // Validate and save username
                 if (_usernameController.text.trim().isNotEmpty) {
+                  authProvider.changeUsername(_usernameController.text);
                   Navigator.pushReplacementNamed(context, 'home');
                 }
-                authProvider.changeUsername(_usernameController.text);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,

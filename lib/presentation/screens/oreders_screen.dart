@@ -39,7 +39,8 @@ class _OredersScreenState extends State<OredersScreen> {
 
   Future<void> _loadPizzaData() async {
     List<Map> response =
-        await db.readData("SELECT pizzaId, date FROM pizzaHot");
+        await db.readData("SELECT id, pizzaId, date FROM pizzaHot");
+
     setState(() {
       pizzaData = response.reversed.toList();
       isLoading = false;
@@ -135,9 +136,10 @@ class _OredersScreenState extends State<OredersScreen> {
                               children: [
                                 IconButton(
                                   onPressed: () async {
+                                    int dbId = pizzaData[index]['id'] as int;
                                     await db.deleteData(
-                                      "DELETE FROM 'pizzaHot' WHERE 'id'=$index",
-                                    );
+                                        "DELETE FROM pizzaHot WHERE id=$dbId");
+
                                     setState(() {
                                       pizzaData.removeAt(index);
                                       selectedItems.remove(index);
@@ -180,20 +182,79 @@ class _OredersScreenState extends State<OredersScreen> {
                         alignment: Alignment.bottomCenter,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            color: Colors.black.withOpacity(0.7),
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 12.0, horizontal: 24.0),
-                              child: Text(
-                                'Total: \$${_calculateTotalPrice().toStringAsFixed(2)}',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                          child: InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                                builder: (context) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          'Selected Items',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall,
+                                        ),
+                                        const SizedBox(height: 12),
+                                        ...selectedItems.map(
+                                          (index) {
+                                            final product = products[
+                                                pizzaData[index]['pizzaId']];
+                                            return ListTile(
+                                              leading: Image.asset(
+                                                  product.image,
+                                                  width: 40),
+                                              title: Text(product.title),
+                                              trailing: Text(
+                                                  '\$${product.price.toStringAsFixed(2)}'),
+                                            );
+                                          },
+                                        ).toList(),
+                                        const SizedBox(height: 16),
+                                        ElevatedButton.icon(
+                                          onPressed: () {
+                                            // TODO: Trigger Stripe payment here
+                                            Navigator.pop(
+                                                context); // Close the bottom sheet
+                                          },
+                                          icon: const Icon(Icons.payment),
+                                          label: Text(
+                                              'Pay \$${_calculateTotalPrice().toStringAsFixed(2)}'),
+                                          style: ElevatedButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 12, horizontal: 24),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                            child: Card(
+                              color: Colors.black.withOpacity(0.7),
+                              elevation: 8,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 12.0, horizontal: 24.0),
+                                child: Text(
+                                  'Total: \$${_calculateTotalPrice().toStringAsFixed(2)}',
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),

@@ -38,21 +38,28 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var element in searchTerms) {
-      if (element.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(element);
+    List<int> matchIndices = [];
+    for (int i = 0; i < products.length; i++) {
+      if (products[i].title.toLowerCase().contains(query.toLowerCase())) {
+        matchIndices.add(i);
       }
     }
     return ListView.builder(
-      itemCount: matchQuery.length,
+      itemCount: matchIndices.length,
       itemBuilder: (context, index) {
-        var result = matchQuery[index];
+        int productIndex = matchIndices[index];
         return MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreen(index: productIndex),
+              ),
+            );
+          },
           child: ListTile(
-            title: Text(result),
-            leading: Image.asset(products[index].image),
+            title: Text(products[productIndex].title),
+            leading: Image.asset(products[productIndex].image),
           ),
         );
       },
@@ -61,34 +68,34 @@ class CustomSearch extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var element in searchTerms) {
-      if (element.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(element);
+    List<int> matchIndices = [];
+    for (int i = 0; i < products.length; i++) {
+      if (products[i].title.toLowerCase().contains(query.toLowerCase())) {
+        matchIndices.add(i);
       }
     }
     timeDilation = 2.0;
 
     return ListView.builder(
-      itemCount: matchQuery.length,
+      itemCount: matchIndices.length,
       itemBuilder: (context, index) {
-        var result = matchQuery[index];
+        int productIndex = matchIndices[index];
         return MaterialButton(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DetailsScreen(index: index),
+                builder: (context) => DetailsScreen(index: productIndex),
               ),
             );
           },
           child: ListTile(
-            title: Text(result),
+            title: Text(products[productIndex].title),
             leading: Padding(
               padding: const EdgeInsets.all(2.0),
               child: Hero(
                 tag: 'pizza_$index',
-                child: Image.asset(products[index].image),
+                child: Image.asset(products[productIndex].image),
               ),
             ),
           ),

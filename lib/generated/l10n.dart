@@ -329,6 +329,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Pizza added successfully to the chart`
+  String get pizza_added_successfully {
+    return Intl.message(
+      'Pizza added successfully to the chart',
+      name: 'pizza_added_successfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

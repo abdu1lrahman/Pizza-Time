@@ -69,6 +69,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ],
               ),
+              // 
               const SizedBox(height: 15.0),
               Text(
                 products[widget.index].title.toString(),
@@ -87,16 +88,32 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-              MaterialButton(
-                color: Colors.red,
-                child: Text(
-                  S.of(context).add_chart,
-                  style: const TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  db.insertData(
-                      "INSERT INTO 'pizzaHot' ('pizzaId','date') VALUES (${widget.index},'$_dateTimeString')");
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${products[widget.index].price.toString()}\$',
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  MaterialButton(
+                    color: Colors.red,
+                    child: Text(
+                      S.of(context).add_chart,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () async {
+                      db.insertData(
+                          "INSERT INTO 'pizzaHot' ('pizzaId','date') VALUES (${widget.index},'$_dateTimeString')");
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(S.of(context).pizza_added_successfully)),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),

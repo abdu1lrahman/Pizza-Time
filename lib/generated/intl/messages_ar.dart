@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "أو يمكنك تسجيل الدخول عبر",
     ),
     "pepperoni": MessageLookupByLibrary.simpleMessage("ببروني بيتزا"),
+    "pizza_added_successfully": MessageLookupByLibrary.simpleMessage(
+      "تمت إضافة البيتزا بنجاح إلى السلة",
+    ),
     "pizza_details": MessageLookupByLibrary.simpleMessage("تفاصيل البيتزا"),
     "register": MessageLookupByLibrary.simpleMessage(
       "انشئ حسابا من أجل بدء رحلتك",
