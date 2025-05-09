@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart' as material;
 import 'package:flutter/material.dart';
 import 'package:pizza_time/data/database/sql_db.dart';
 import 'package:pizza_time/data/models/pizza_models.dart';
 import 'package:pizza_time/generated/l10n.dart';
+import 'package:pizza_time/stripe/payment_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OredersScreen extends StatefulWidget {
@@ -47,8 +49,8 @@ class _OredersScreenState extends State<OredersScreen> {
     });
   }
 
-  double _calculateTotalPrice() {
-    double total = 0.0;
+  int _calculateTotalPrice() {
+    int total = 0;
     for (var index in selectedItems) {
       if (index >= 0 && index < pizzaData.length) {
         int pizzaId = pizzaData[index]['pizzaId'] as int;
@@ -126,7 +128,7 @@ class _OredersScreenState extends State<OredersScreen> {
                           return const SizedBox.shrink();
                         }
                         final bool isSelected = selectedItems.contains(index);
-                        return Card(
+                        return material.Card(
                           child: ListTile(
                             leading: Image.asset(products[pizzaId].image),
                             title: Text(products[pizzaId].title),
@@ -194,20 +196,23 @@ class _OredersScreenState extends State<OredersScreen> {
                                 builder: (context) {
                                   return Padding(
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
+                                    child: ListView(
+                                      // mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Text(
-                                          'Selected Items',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineSmall,
+                                        material.Center(
+                                          child: Text(
+                                            'Selected Items',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headlineSmall,
+                                          ),
                                         ),
                                         const SizedBox(height: 12),
                                         ...selectedItems.map(
                                           (index) {
                                             final product = products[
                                                 pizzaData[index]['pizzaId']];
+
                                             return ListTile(
                                               leading: Image.asset(
                                                   product.image,
@@ -217,11 +222,29 @@ class _OredersScreenState extends State<OredersScreen> {
                                                   '\$${product.price.toStringAsFixed(2)}'),
                                             );
                                           },
-                                        ).toList(),
+                                        ),
                                         const SizedBox(height: 16),
                                         ElevatedButton.icon(
-                                          onPressed: () {
-                                            // TODO: Trigger Stripe payment here
+                                          onPressed: () async {
+                                            PaymentManager pm =
+                                                PaymentManager();
+                                            pm.makePayment(
+                                                _calculateTotalPrice(), 'USD');
+                                            for (int index
+                                                in selectedItems.toList()) {
+                                              int dbId =
+                                                  pizzaData[index]['id'] as int;
+                                              await db.deleteData(
+                                                  "DELETE FROM pizzaHot WHERE id=$dbId");
+                                            }
+
+                                            // Remove selected items from the UI
+                                            setState(() {
+                                              pizzaData.removeWhere((item) =>
+                                                  selectedItems.contains(
+                                                      pizzaData.indexOf(item)));
+                                              selectedItems.clear();
+                                            });
                                             Navigator.pop(
                                                 context); // Close the bottom sheet
                                           },
@@ -239,7 +262,7 @@ class _OredersScreenState extends State<OredersScreen> {
                                 },
                               );
                             },
-                            child: Card(
+                            child: material.Card(
                               color: Colors.black.withOpacity(0.7),
                               elevation: 8,
                               shape: RoundedRectangleBorder(
