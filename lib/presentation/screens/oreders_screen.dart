@@ -228,25 +228,35 @@ class _OredersScreenState extends State<OredersScreen> {
                                           onPressed: () async {
                                             PaymentManager pm =
                                                 PaymentManager();
-                                            pm.makePayment(
-                                                _calculateTotalPrice(), 'USD');
-                                            for (int index
-                                                in selectedItems.toList()) {
-                                              int dbId =
-                                                  pizzaData[index]['id'] as int;
-                                              await db.deleteData(
-                                                  "DELETE FROM pizzaHot WHERE id=$dbId");
+                                            bool paymentSuccess =
+                                                await pm.makePayment(
+                                                    _calculateTotalPrice(),
+                                                    'USD');
+                                            if (paymentSuccess) {
+                                              for (int index
+                                                  in selectedItems.toList()) {
+                                                int dbId = pizzaData[index]
+                                                    ['id'] as int;
+                                                await db.deleteData(
+                                                    "DELETE FROM pizzaHot WHERE id=$dbId");
+                                              }
+                                              setState(() {
+                                                pizzaData.removeWhere((item) =>
+                                                    selectedItems.contains(
+                                                        pizzaData
+                                                            .indexOf(item)));
+                                                selectedItems.clear();
+                                              });
+                                              Navigator.pop(context);
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                      'Payment failed. Please try again.'),
+                                                ),
+                                              );
                                             }
-
-                                            // Remove selected items from the UI
-                                            setState(() {
-                                              pizzaData.removeWhere((item) =>
-                                                  selectedItems.contains(
-                                                      pizzaData.indexOf(item)));
-                                              selectedItems.clear();
-                                            });
-                                            Navigator.pop(
-                                                context); // Close the bottom sheet
                                           },
                                           icon: const Icon(Icons.payment),
                                           label: Text(

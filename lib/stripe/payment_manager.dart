@@ -6,14 +6,15 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 
 class PaymentManager {
-  Future<void> makePayment(int amount, String currency) async {
+  Future<bool> makePayment(int amount, String currency) async {
     try {
       String clientSecret =
           await _getClientSecret((amount * 100).toString(), currency);
       await _initializePaymentSheet(clientSecret);
       await Stripe.instance.presentPaymentSheet();
+      return true;
     } catch (error) {
-      throw Exception('Failed to create payment intent: $error');
+      return false;
     }
   }
 
